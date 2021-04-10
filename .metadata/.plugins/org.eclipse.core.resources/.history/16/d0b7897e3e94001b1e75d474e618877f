@@ -1,0 +1,50 @@
+package com.room.service;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.room.Model.Room;
+import com.room.Repository.RoomRepository;
+import com.room.Service.RoomService;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RoomServiceTest {
+
+	@Autowired
+	private RoomService roomService;
+	
+	@MockBean
+	private RoomRepository roomRepository;
+	
+	@Test
+	public void testAddNewRoom()
+	{
+	Room room = new Room();
+	room.setId("r1");
+	room.setRoomType("SINGLE");
+	room.setStatus("AVAILABLE");
+	
+	Mockito.when(roomRepository.save(room)).thenReturn(room);
+	assertThat(roomService.addNewRoom(room)).isEqualTo("Success! Room Added with Id - "+room.getId());
+	}
+	
+	@Test
+	public void testgetRoomById()
+	{
+		Room room = new Room();
+		room.setId("r1");
+		room.setRoomType("SINGLE");
+		room.setStatus("AVAILABLE");
+		
+		Mockito.when(roomRepository.findById("r1").get()).thenReturn(room);
+		assertThat(roomService.getRoomById("r1")).isEqualTo(room);
+	}
+	
+}

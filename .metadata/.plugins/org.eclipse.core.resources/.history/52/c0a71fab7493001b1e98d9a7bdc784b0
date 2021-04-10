@@ -1,0 +1,5 @@
+package com.employee.Exception;
+
+public class ErrorDetails {
+
+}

@@ -1,0 +1,39 @@
+package com.employee.Service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.employee.Model.Employee;
+import com.employee.Model.Result;
+import com.employee.Repository.EmployeeRepository;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class EmployeeServiceTest {
+	
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@MockBean
+	private EmployeeRepository employeeRepository;
+
+	
+	@Test
+	public void testaddEmployee()
+	{
+		Employee employee = new Employee();
+		employee.setId("E1");
+		employee.setName("ABCDEF");
+		employee.setRole("RECEIPTIONIST");
+		employee.setSalary(50000);
+		employee.setPassword("qwerty");
+		
+	}
+}

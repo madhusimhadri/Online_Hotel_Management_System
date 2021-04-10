@@ -1,0 +1,15 @@
+server.port=8081
+spring.application.name=HMS-Room-Management
+
+
+collection.counter=sequence
+sequence.key=RoomIdSequence
+room.prefix=r
+room.status.default=${room.status.available}
+room.type.id=roomTypeId
+room.status.available=AVAILABLE
+room.status.booked=BOOKED
+room.status.available.nights=0
+
+
+spring.data.mongodb.uri=mongodb://localhost:27017/RoomsDatabase

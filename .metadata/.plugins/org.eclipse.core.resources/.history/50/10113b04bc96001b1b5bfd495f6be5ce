@@ -1,0 +1,33 @@
+package com.hotel.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class ManagerService {
+	
+	@Autowired
+	RestTemplate restTemplate;
+	
+	public String roomHost = "room-management-service";
+	
+	//API Calls To Room Management Service
+	public String ADD_ROOM = "http://" + roomHost + "/addRoom";
+	public String ADD_MULTIPLE_ROOMS = "http://" + roomHost + "/addMultiple/{type}/{count}";
+	public String GET_ROOM_BY_ID = "http://" + roomHost + "/getRoom/{id}";
+	public String GET_ROOM_BY_TYPE = "http://" + roomHost + "/getAllRoomsByType/{type}";
+	public String GET_ROOM_BY_STATUS = "http://" + roomHost + "/getAllRoomsByStatus/{status}";
+	public String GET_ALL_AVAILABLE_ROOMS = "http://" + roomHost + "/getAllAvailableRooms";
+	public String GET_ALL_BOOKED_ROOMS = "http://" + roomHost + "/getAllBookedRooms";
+	public String UPDATE_ROOM = "http://" + roomHost + "/updateRoom";
+	public String DELETE_ROOM = "http://" + roomHost + "/deleteRoom/{id}";
+	public String ADD_NEWROOM_TYPE = "http://" + roomHost + "addRoom/{type}/{price}";
+	public String GET_ALL_ROOMTYPES = "http://" + roomHost + "/getAllTypes";
+	public String DELETE_ROOMTYPE = "http://" + roomHost + "/deleteRoomType/{type}";
+	public String GET_REPORT = "http://" + roomHost + "/getReports";
+	
+	public String employeeHost = "employee-management-service";
+	
+	//API Calls to Employee Management Service
+}

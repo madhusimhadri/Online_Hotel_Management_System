@@ -1,0 +1,94 @@
+package com.hotel.Model;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection ="EmployeeInventory")
+public class Employee {
+
+	private String id;
+	private String name;
+	private String password;
+	private String role;
+	private long salary;
+	private ContactDetails details;
+	
+	//Default
+	public Employee()
+	{
+		
+	}
+	
+	//For Post Method
+	public Employee(String name, String password, String role, long salary, ContactDetails details) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.role = role;
+		this.salary = salary;
+		this.details = details;
+	}
+	
+	//For Update Method
+	public Employee(String id, String name, String password, String role, long salary, ContactDetails details) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.role = role;
+		this.salary = salary;
+		this.details = details;
+	}
+	
+	//Getters and Setters
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public long getSalary() {
+		return salary;
+	}
+
+	public void setSalary(long salary) {
+		this.salary = salary;
+	}
+
+	public ContactDetails getDetails() {
+		return details;
+	}
+
+	public void setDetails(ContactDetails details) {
+		this.details = details;
+	}
+	
+	
+	
+	
+}

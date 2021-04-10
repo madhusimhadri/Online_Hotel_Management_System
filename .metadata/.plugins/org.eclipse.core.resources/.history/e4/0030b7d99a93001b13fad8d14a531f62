@@ -1,0 +1,94 @@
+package com.employee.Controller;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+// import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+// import com.employee.Exception.ResourceNotFoundException;
+import com.employee.Model.Employee;
+import com.employee.Model.Result;
+import com.employee.Service.EmployeeService;
+
+@RestController
+public class EmployeeController {
+	
+	@Autowired
+	EmployeeService employeeService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
+	
+	@PostMapping("/addEmployee")
+	public Result addEmployee(@RequestBody Employee employee)
+	{
+		logger.info("Inside addEmployee() method of RoomController");
+		return employeeService.addEmployee(employee);
+	}
+	
+	@GetMapping("/getAllEmployees")
+	public List<Employee> getAllEmployees()
+	{
+		logger.info("Inside getAllEmployees() method of RoomController");
+		return employeeService.getAllEmployees();
+	}
+	
+	
+ 	@GetMapping("/getEmployeeById/{id}")
+	public Employee getEmployeeById(@PathVariable String id)
+	{	
+ 		logger.info("Inside getEmployeeById() method of RoomController");
+		return employeeService.getEmployeeById(id);
+	}
+
+	/* orElseThrow is not Working 
+	@GetMapping("/getEmployeeById/{id}")
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable String id)
+			throws ResourceNotFoundException {
+		Employee employee = employeeService.getEmployeeById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
+		return ResponseEntity.ok().body(employee);
+	}
+	*/
+	
+	
+	
+	@GetMapping("/getEmployeeByName/{name}")
+	public List<Employee> getEmployeeByName(@PathVariable String name)
+	{	
+		logger.info("Inside getEmployeeByName() method of RoomController");
+		return employeeService.getEmployeeByName(name);
+	}
+	
+	@GetMapping("/getEmployeeByRole/{role}")
+	public List<Employee> getEmployeeByRole(@PathVariable String role)
+	{	
+		logger.info("Inside getEmployeeByRole() method of RoomController");
+		return employeeService.getEmployeeByRole(role);
+	}
+	
+	@PutMapping("/updateEmployee")
+	public Result updateEmployee(@RequestBody Employee employee)
+	{	
+		logger.info("Inside updateEmployee() method of RoomController");
+		return employeeService.updateEmployee(employee);
+	}
+	
+	@DeleteMapping("/deleteEmployee/{id}")
+	public Result deleteEmployee(@PathVariable String id)
+	{	
+		logger.info("Inside deleteEmployee() method of RoomController");
+		return employeeService.deleteEmployee(id);
+	}
+	
+	
+}
