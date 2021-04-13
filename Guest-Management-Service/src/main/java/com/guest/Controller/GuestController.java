@@ -1,4 +1,4 @@
-package com.guest.Controller;
+package com.guest.controller;
 
 import java.util.List;
 
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.guest.Model.Guest;
-import com.guest.Model.Show;
-import com.guest.Service.GuestService;
+
+import com.guest.model.Guest;
+import com.guest.model.Show;
+import com.guest.service.GuestService;
 
 @RestController
 public class GuestController {

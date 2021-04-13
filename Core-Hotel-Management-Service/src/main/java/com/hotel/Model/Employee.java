@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

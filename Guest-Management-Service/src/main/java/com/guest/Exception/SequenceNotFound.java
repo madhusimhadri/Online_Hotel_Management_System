@@ -1,4 +1,4 @@
-package com.guest.Exception;
+package com.guest.exception;
 
 public class SequenceNotFound extends RuntimeException {
 

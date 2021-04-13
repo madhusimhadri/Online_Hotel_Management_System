@@ -1,0 +1,37 @@
+package com.hotel.Model;
+
+public class RoomStay {
+	
+	private String roomId;
+	private int noOfNights;
+	
+	// Default
+	public RoomStay()
+	{
+		
+	}
+
+	public RoomStay(String roomId, int noOfNights) {
+		super();
+		this.roomId = roomId;
+		this.noOfNights = noOfNights;
+	}
+
+	public String getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
+	}
+
+	public int getNoOfNights() {
+		return noOfNights;
+	}
+
+	public void setNoOfNights(int noOfNights) {
+		this.noOfNights = noOfNights;
+	}
+	
+	
+}

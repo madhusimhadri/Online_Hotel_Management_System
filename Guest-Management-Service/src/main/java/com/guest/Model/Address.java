@@ -1,4 +1,4 @@
-package com.guest.Model;
+package com.guest.model;
 
 public class Address {
 	

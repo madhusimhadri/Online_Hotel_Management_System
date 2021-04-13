@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,28 +9,29 @@ public class Room {
 	private String id;
 	private String roomType;
 	private String status;
-	private BookingDetails details;
-	
-	// Default
+	private BookingDetails bookingDetails;
 	public Room() {
 		
 	}
 	
-	// for status - Available
 	public Room(String id, String roomType, String status) {
 		super();
 		this.id = id;
 		this.roomType = roomType;
 		this.status = status;
 	}
-	
-	// for status- Booked
-	public Room(String id, String roomType, String status, BookingDetails details) {
+	public Room(String roomType, String status) {
+		super();
+		this.roomType = roomType;
+		this.status = status;
+	}
+
+	public Room(String id, String roomType, String status, BookingDetails bookingDetails) {
 		super();
 		this.id = id;
 		this.roomType = roomType;
 		this.status = status;
-		this.details = details;
+		this.bookingDetails = bookingDetails;
 	}
 
 	public String getId() {
@@ -58,11 +59,18 @@ public class Room {
 	}
 
 	public BookingDetails getBookingDetails() {
-		return details;
+		return bookingDetails;
 	}
 
-	public void setBookingDetails(BookingDetails details) {
-		this.details = details;
+	public void setBookingDetails(BookingDetails bookingDetails) {
+		this.bookingDetails = bookingDetails;
 	}
+
+	@Override
+	public String toString() {
+		return "Room [id=" + id + ", roomType=" + roomType + ", status=" + status + ", bookingDetails=" + bookingDetails
+				+ "]";
+	}
+	
 	
 }

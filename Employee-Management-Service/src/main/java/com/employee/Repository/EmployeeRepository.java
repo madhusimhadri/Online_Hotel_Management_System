@@ -1,4 +1,4 @@
-package com.employee.Repository;
+package com.employee.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.employee.Model.Employee;
+import com.employee.model.Employee;
 
 @Repository
 public interface EmployeeRepository extends MongoRepository<Employee, String> {

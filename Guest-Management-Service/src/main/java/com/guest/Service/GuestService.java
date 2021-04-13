@@ -1,4 +1,4 @@
-package com.guest.Service;
+package com.guest.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.guest.Model.Guest;
-import com.guest.Model.Show;
-import com.guest.Repository.GuestRepository;
-import com.guest.Repository.SequenceRepository;
+import com.guest.model.Guest;
+import com.guest.model.Show;
+import com.guest.repository.GuestRepository;
+import com.guest.repository.SequenceRepository;
 
 @Service
 public class GuestService {

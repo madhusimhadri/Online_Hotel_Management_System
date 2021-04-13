@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 import java.util.Date;
 
@@ -6,9 +6,8 @@ public class BookedRoomsDetails {
 	private String id;
 	private String status;
 	private Date dateOfBooking;
-	private int noOfNights;
-	private long price;
-	
+	private int nights;
+	private long amount;
 	public BookedRoomsDetails() {
 		
 	}
@@ -17,8 +16,8 @@ public class BookedRoomsDetails {
 		this.id = id;
 		this.status = status;
 		this.dateOfBooking = dateOfBooking;
-		this.noOfNights = nights;
-		this.price = amount;
+		this.nights = nights;
+		this.amount = amount;
 	}
 	public String getId() {
 		return id;
@@ -39,16 +38,16 @@ public class BookedRoomsDetails {
 		this.dateOfBooking = dateOfBooking;
 	}
 	public int getNights() {
-		return noOfNights;
+		return nights;
 	}
 	public void setNights(int nights) {
-		this.noOfNights = nights;
+		this.nights = nights;
 	}
 	public long getAmount() {
-		return price;
+		return amount;
 	}
 	public void setAmount(long amount) {
-		this.price = amount;
+		this.amount = amount;
 	}
 	
 }

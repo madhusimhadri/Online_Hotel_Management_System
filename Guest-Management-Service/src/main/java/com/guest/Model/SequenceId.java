@@ -1,4 +1,4 @@
-package com.guest.Model;
+package com.guest.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

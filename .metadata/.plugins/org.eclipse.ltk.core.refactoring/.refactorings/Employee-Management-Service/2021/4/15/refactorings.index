@@ -3,3 +3,12 @@
 1617683304965	Copy compilation unit
 1617704936761	Rename type 'Result'
 1617783763514	Delete element
+1618028939562	Rename package 'com.employee.Controller'
+1618028961581	Rename package 'com.employee.Exception'
+1618028975625	Rename package 'com.employee.Model'
+1618028987003	Rename package 'com.employee.Repository'
+1618029312641	Rename package 'com.employee.Service.Util'
+1618029338521	Rename package 'com.employee.Service.util'
+1618029362836	Rename package 'com.employee.Service'
+1618029378139	Rename package 'com.employee.Service1.util'
+1618030120739	Rename package 'com.employee.Service'

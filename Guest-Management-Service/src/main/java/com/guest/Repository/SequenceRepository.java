@@ -1,6 +1,6 @@
-package com.guest.Repository;
+package com.guest.repository;
 
-import com.guest.Exception.SequenceNotFound;
+import com.guest.exception.SequenceNotFound;
 
 public interface SequenceRepository {
 	

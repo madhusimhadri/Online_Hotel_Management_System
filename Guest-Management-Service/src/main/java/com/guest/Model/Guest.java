@@ -1,4 +1,4 @@
-package com.guest.Model;
+package com.guest.model;
 
 import java.util.List;
 

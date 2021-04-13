@@ -1,6 +1,6 @@
-package com.employee.Repository;
+package com.employee.repository;
 
-import com.employee.Exception.SequenceNotFound;
+import com.employee.exception.SequenceNotFound;
 
 public interface SequenceRepository {
 	

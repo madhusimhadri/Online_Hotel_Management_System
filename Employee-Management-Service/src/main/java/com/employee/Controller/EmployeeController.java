@@ -1,4 +1,4 @@
-package com.employee.Controller;
+package com.employee.controller;
 
 import java.util.List;
 
@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-// import com.employee.Exception.ResourceNotFoundException;
-import com.employee.Model.Employee;
-import com.employee.Model.Show;
-import com.employee.Service.EmployeeService;
+import com.employee.model.Employee;
+import com.employee.model.Show;
+import com.employee.service.EmployeeService;
 
 @RestController
 public class EmployeeController {

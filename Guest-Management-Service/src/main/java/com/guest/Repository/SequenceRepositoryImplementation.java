@@ -1,4 +1,4 @@
-package com.guest.Repository;
+package com.guest.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
-import com.guest.Exception.SequenceNotFound;
-import com.guest.Model.SequenceId;
+import com.guest.exception.SequenceNotFound;
+import com.guest.model.SequenceId;
 
 @Repository
 public class SequenceRepositoryImplementation implements SequenceRepository {

@@ -1,4 +1,4 @@
-package com.employee.Service;
+package com.employee.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.employee.Model.Employee;
-import com.employee.Model.Show;
-import com.employee.Repository.EmployeeRepository;
-import com.employee.Repository.SequenceRepository;
-import com.employee.Service.Util.Password;
+import com.employee.model.Employee;
+import com.employee.model.Show;
+import com.employee.repository.EmployeeRepository;
+import com.employee.repository.SequenceRepository;
+import com.employee.service.util.Password;
 
 @Service
 public class EmployeeService {

@@ -3,3 +3,11 @@
 1617698206117	Rename method 'ExistOrNot'
 1617701975958	Delete element
 1617714180303	Rename method 'getreports'
+1618029486816	Rename package 'com.room.Controller'
+1618029500908	Rename package 'com.room.Exception'
+1618029511248	Rename package 'com.room.Model'
+1618029524162	Rename package 'com.room.Repository'
+1618029552986	Rename package 'com.room.Service.Util'
+1618029597089	Rename package 'com.room.Service.util'
+1618029615068	Rename package 'com.room.Service'
+1618029641505	Rename package 'com.room.Service1.util'

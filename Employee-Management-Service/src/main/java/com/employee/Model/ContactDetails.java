@@ -1,4 +1,4 @@
-package com.employee.Model;
+package com.employee.model;
 
 public class ContactDetails {
 	

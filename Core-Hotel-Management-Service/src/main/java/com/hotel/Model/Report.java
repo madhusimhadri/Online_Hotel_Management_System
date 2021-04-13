@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ public class Report {
 	private int totalRooms;
 	private int availableRooms;
 	private int bookedRooms;
-	private List<BookedRoomsDetails> bookedDetails;
+	private List<BookedRoomsDetails> bookedRoomsDetails;
 	private long totalEarnings;
 	public Report() {
 		
@@ -17,7 +17,7 @@ public class Report {
 		this.totalRooms = totalRooms;
 		this.availableRooms = availableRooms;
 		this.bookedRooms = bookedRooms;
-		this.bookedDetails = bookedRoomsDetails;
+		this.bookedRoomsDetails = bookedRoomsDetails;
 		this.totalEarnings = totalEarnings;
 	}
 	public int getTotalRooms() {
@@ -39,10 +39,10 @@ public class Report {
 		this.bookedRooms = bookedRooms;
 	}
 	public List<BookedRoomsDetails> getBookedRoomsDetails() {
-		return bookedDetails;
+		return bookedRoomsDetails;
 	}
 	public void setBookedRoomsDetails(List<BookedRoomsDetails> bookedRoomsDetails) {
-		this.bookedDetails = bookedRoomsDetails;
+		this.bookedRoomsDetails = bookedRoomsDetails;
 	}
 	public long getTotalEarnings() {
 		return totalEarnings;

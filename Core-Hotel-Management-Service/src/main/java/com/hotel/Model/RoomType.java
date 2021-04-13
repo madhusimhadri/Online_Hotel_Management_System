@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 
 import java.util.HashMap;
@@ -10,10 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class RoomType {
 	
 	@Id
-	private String id; 
+	private String id; //This value will be same as we only use the hashMap below
 	
 	private HashMap<String,Long> roomType;
-	
+	//Room price will be mentioned in above hash map
 	public RoomType() {
 		
 	}

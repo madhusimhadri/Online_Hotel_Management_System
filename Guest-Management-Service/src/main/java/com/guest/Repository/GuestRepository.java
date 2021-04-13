@@ -1,4 +1,4 @@
-package com.guest.Repository;
+package com.guest.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.guest.Model.Guest;
+import com.guest.model.Guest;
 
 @Repository
 public interface GuestRepository extends MongoRepository<Guest, String> {

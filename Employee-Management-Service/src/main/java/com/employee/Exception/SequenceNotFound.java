@@ -1,4 +1,4 @@
-package com.employee.Exception;
+package com.employee.exception;
 
 public class SequenceNotFound extends RuntimeException {
 

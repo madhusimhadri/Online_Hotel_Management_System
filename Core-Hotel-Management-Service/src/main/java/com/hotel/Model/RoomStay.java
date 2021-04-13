@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 public class RoomStay {
 	

@@ -1,38 +1,27 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 public class RoomDetails {
-	
-	private String roomType;
+	private String type;
 	private long price;
-	
-	public RoomDetails()
-	{
+	public RoomDetails() {
 		
 	}
-
-	public RoomDetails(String roomType, long price) {
+	public RoomDetails(String type, long price) {
 		super();
-		this.roomType = roomType;
+		this.type = type;
 		this.price = price;
 	}
-
-	public String getRoomType() {
-		return roomType;
+	public String getType() {
+		return type;
 	}
-
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
+	public void setType(String type) {
+		this.type = type;
 	}
-
 	public long getPrice() {
 		return price;
 	}
-
 	public void setPrice(long price) {
 		this.price = price;
 	}
-	
-	
-	
 	
 }

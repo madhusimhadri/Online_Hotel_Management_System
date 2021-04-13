@@ -1,37 +1,26 @@
-package com.guest.Model;
+package com.guest.model;
 
 public class Show {
-	
-	private String referId;
+	private String refId;
 	private String message;
-	
-	// Default
-	public Show()
-	{
+	public Show() {
 		
 	}
-
-	public Show(String referId, String message) {
+	public Show(String refId, String message) {
 		super();
-		this.referId = referId;
+		this.refId = refId;
 		this.message = message;
 	}
-
-	public String getReferId() {
-		return referId;
+	public String getRefId() {
+		return refId;
 	}
-
-	public void setReferId(String referId) {
-		this.referId = referId;
+	public void setRefId(String refId) {
+		this.refId = refId;
 	}
-
 	public String getMessage() {
 		return message;
 	}
-
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
 }

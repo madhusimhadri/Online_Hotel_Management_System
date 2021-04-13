@@ -1,64 +1,31 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
 public class BookingDetails {
-	
-	@JsonFormat(pattern = "yyyy-MM-dd", shape = Shape.STRING)
-	private Date dateOfBooking;
-	private int noOfNights;
+	private Date bookingDate;
+	private int nights;
 	private String guestId;
-	
 	public BookingDetails() {
 		
 	}
-	
-	public BookingDetails(Date dateOfBooking, int noOfNights, String guestId) {
+	public BookingDetails(Date bookingDate, int nights, String guestId) {
 		super();
-		this.dateOfBooking = dateOfBooking;
-		this.noOfNights = noOfNights;
-		this.guestId = guestId;
-	}
-	public Date getDateOfBooking() {
-		return dateOfBooking;
-	}
-	public void setDateOfBooking(Date dateOfBooking) {
-		this.dateOfBooking = dateOfBooking;
-	}
-	public int getNoOfNights() {
-		return noOfNights;
-	}
-	public void setNoOfNights(int noOfNights) {
-		this.noOfNights = noOfNights;
-	}
-	public String getGuestId() {
-		return guestId;
-	}
-	public void setGuestId(String guestId) {
-		this.guestId = guestId;
-	}
-	
-	
-	/*public BookingDetails(Date bookingDate, int nights, String guestId) {
-		super();
-		this.dateOfBooking = bookingDate;
-		this.noOfNights = nights;
+		this.bookingDate = bookingDate;
+		this.nights = nights;
 		this.guestId = guestId;
 	}
 	public Date getBookingDate() {
-		return dateOfBooking;
+		return bookingDate;
 	}
 	public void setBookingDate(Date bookingDate) {
-		this.dateOfBooking = bookingDate;
+		this.bookingDate = bookingDate;
 	}
 	public int getNights() {
-		return noOfNights;
+		return nights;
 	}
 	public void setNights(int nights) {
-		this.noOfNights = nights;
+		this.nights = nights;
 	}
 	public String getGuestId() {
 		return guestId;
@@ -66,6 +33,5 @@ public class BookingDetails {
 	public void setGuestId(String guestId) {
 		this.guestId = guestId;
 	}
-	*/
 	
 }

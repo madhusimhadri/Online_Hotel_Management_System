@@ -1,4 +1,4 @@
-package com.hotel.Service;
+package com.hotel.service;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,13 +18,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hotel.Model.BookingData;
-import com.hotel.Model.Guest;
-import com.hotel.Model.Invoice;
-import com.hotel.Model.Room;
-import com.hotel.Model.RoomStay;
-import com.hotel.Model.RoomType;
-import com.hotel.Model.Show;
+import com.hotel.model.BookingData;
+import com.hotel.model.Employee;
+import com.hotel.model.Guest;
+import com.hotel.model.Invoice;
+import com.hotel.model.Room;
+import com.hotel.model.RoomStay;
+import com.hotel.model.RoomType;
+import com.hotel.model.Show;
+import com.hotel.security.SecurityConfig;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 public class ReceptionistService {
@@ -34,6 +37,9 @@ public class ReceptionistService {
 	
 	@Autowired
 	Logger logger;
+	
+	@Autowired
+	SecurityConfig securityConfig;
 	
 	public String roomApi = "room-management-service";
 
@@ -92,13 +98,22 @@ public class ReceptionistService {
 	// ====> Receptionist Operations on GUEST
 	
 	// Add Guest
+	@HystrixCommand(fallbackMethod = "addGuestFallback")
 	public Show addGuest(Guest guest)
 	{
 		Show result = restTemplate.postForObject(ADD_GUEST, guest, Show.class);
 		return result;
 	}
 	
+	// Add Guest - Fallback
+	public Show addGuestFallback(Guest guest)
+	{
+		logger.error("Service Down");
+		return new Show("Fallback!"," Server Down, Try again");
+	}
+	
 	// Get Guest By Id
+	@HystrixCommand(fallbackMethod = "getGuestByIdFallback")
 	public Guest getGuestById(String id)
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -109,7 +124,15 @@ public class ReceptionistService {
 		return restTemplate.exchange(url, HttpMethod.GET,httpEntity,Guest.class,id).getBody();
 	}
 	
+	// Add Guest - Fallback
+		public Guest getGuestByIdFallback(String id)
+		{
+			logger.error("Service Down");
+			return null;
+		}
+	
 	// Get Guest By Name
+	@HystrixCommand(fallbackMethod = "getGuestByNameFallback")
 	public List<Guest> getGuestByName(String name)
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -122,7 +145,15 @@ public class ReceptionistService {
 		return Arrays.stream(guests.getBody()).map(g->mapper.convertValue(g,Guest.class)).collect(Collectors.toList());
 	}
 	
+	// Get Guest By Name - Fallback
+	public List<Guest> getGuestByNameFallback(String name)
+	{
+		logger.error("Service Down");
+		return null;
+	}
+	
 	// Update Guest Details
+	@HystrixCommand(fallbackMethod = "updateGuestDetailsFallback")
 	public Show updateGuestDetails(Guest guest)
 	{
 		if(guest.getId() == null) 
@@ -135,7 +166,15 @@ public class ReceptionistService {
 		return result.getBody();
 	}
 	
+	// Update Guest Details - Fallback
+	public Show updateGuestDetailsFallback(Guest guest)
+	{
+		logger.error("Service Down");
+		return new Show("Fallback","Try again");
+	}
+	
 	// Delete Guest By Id
+	@HystrixCommand(fallbackMethod = "deleteGuestFallback")
 	public Show deleteGuest(String id)
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -147,9 +186,17 @@ public class ReceptionistService {
 		return result.getBody();	
 	}
 	
+	// Delete Guest By Id - Fallback
+	public Show deleteGuestFallback(String id)
+	{
+		logger.error("Service Down");
+		return new Show("Fallback","Try again");
+	}
+	
 	// ====> Receptionist Operations on ROOM
 	
 	// Get Room By Id
+	@HystrixCommand(fallbackMethod = "getRoomByIdFallback")
 	public Room getRoomById(String id)
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -160,7 +207,15 @@ public class ReceptionistService {
 		return restTemplate.exchange(url,HttpMethod.GET,httpEntity,Room.class,id).getBody();	
 	}
 	
+	// Get Room By Id - Fallback
+	public Room getRoomByIdFallback(String id)
+	{
+		logger.error("Service Down");
+		return null;
+	}
+	
 	// Get Room By Status
+	@HystrixCommand(fallbackMethod = "getRoomsByStatusFallback")
 	public List<Room> getRoomsByStatus(String status)
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -173,7 +228,15 @@ public class ReceptionistService {
 		return Arrays.stream(rooms.getBody()).map(r->mapper.convertValue(r,Room.class)).collect(Collectors.toList());
 	}
 	
+	// Get Room By Status - Fallback
+	public List<Room> getRoomsByStatusFallback(String status)
+	{
+		logger.error("Service Down");
+		return null;
+	}
+	
 	// Update Room Details
+	@HystrixCommand(fallbackMethod = "updateRoomDetailsFallback")
 	public Show updateRoomDetails(Room room)
 	{
 		if(room.getId()==null)
@@ -187,8 +250,18 @@ public class ReceptionistService {
 		
 	}
 	
+	// Update Room Details - Fallback
+	public Show updateRoomDetailsFallback(Room room)
+	{
+		logger.error("Service Down");
+		return new Show("Fallback","Try again");
+	}
+	
+	
+	
 	// Make Reservations
 	// Update Room and Guest Details
+	@HystrixCommand(fallbackMethod = "makeReservationFallback")
 	public Show makeReservation(BookingData bookingData)
 	{
 		Room room = bookingData.getRoom();
@@ -196,15 +269,23 @@ public class ReceptionistService {
 
 		Show updateGuestDetails = updateGuestDetails(guest);
 		Show updateRoomDetails = updateRoomDetails(room);
-		
-		if(updateGuestDetails.getReferId().contains("Invalid") || updateRoomDetails.getReferId().contains("Invalid"))
+		System.out.println(room.getBookingDetails());
+		if(updateGuestDetails.getRefId().contains("Invalid") || updateRoomDetails.getRefId().contains("Invalid"))
 		{
 			return new Show("Invalid Request!",updateGuestDetails.getMessage()+" "+updateRoomDetails.getMessage());
 		}
 		return new Show(room.getId(),"Room booked for guest with name "+guest.getName()+" with Id "+guest.getId());	
 	}
 	
+	// Make Reservations - Fallback
+	public Show makeReservationFallback(BookingData bookingData)
+	{
+		logger.error("Service Down");
+		return new Show("Fallback","Try again");
+	}
+	
 	// Get All Room Types - Used in generating invoice
+	@HystrixCommand(fallbackMethod = "getAllRoomTypesFallback")
 	public RoomType getAllRoomTypes()
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -216,14 +297,36 @@ public class ReceptionistService {
 		
 	}
 	
-	//Get Tax - Used in generating invoice
-	public float getTax(int days,long price)
-	{
-		long total = Long.valueOf(days)* price;
-		float tax = (float) invoiceTax * (float) total/100;
-		return tax;
+	// Get All Room Types - Fallback
+	public RoomType getAllRoomTypesFallback()
+	{	
+		logger.error("Service Down");
+		return null;	
 	}
 	
+	// Get Logged in Employee
+	// @HystrixCommand(fallbackMethod = "getLoggedInEmployeeFallback")
+	public Employee getLoggedInEmployee()
+	{
+		String id = securityConfig.getLoggedInUserId();
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		String url = GET_EMPLOYEE_BY_ID;
+		
+		HttpEntity<?> httpEntity = new HttpEntity<>(headers);
+		ResponseEntity<Employee> employee = restTemplate.exchange(url,HttpMethod.GET, httpEntity,Employee.class,id);
+		return employee.getBody();
+	}
+	
+	/*
+	// Get Logged in Employee
+	public Employee getLoggedInEmployeeFallback()
+	{
+		logger.error("Service Down");
+		return null;
+	}
+	*/	
 	// Issue Bill
 	public Invoice issueBill(String guestId,String employeeName)
 	{
@@ -254,16 +357,24 @@ public class ReceptionistService {
 		
 		invoice.setRoomPricePerNight(roomPrice);
 		invoice.setNights(roomDetails.getNoOfNights());
-		invoice.setBookingDate(room.getBookingDetails().getDateOfBooking());
+		invoice.setBookingDate(room.getBookingDetails().getBookingDate());
 		
 		float tax = getTax(roomDetails.getNoOfNights(),roomPrice);
 		invoice.setTax(tax);
-		float totalBill = (float) room.getBookingDetails().getNoOfNights() * (float) roomPrice + tax;
+		float totalBill = (float) room.getBookingDetails().getNights() * (float) roomPrice + tax;
 		invoice.setTotalBill(totalBill);
 		
 		invoice.setIssuedBy(employeeName);
 		
 		return invoice;
 	}
+	
+	//Get Tax - Used in generating invoice
+		public float getTax(int days,long price)
+		{
+			long total = Long.valueOf(days)* price;
+			float tax = (float) invoiceTax * (float) total/100;
+			return tax;
+		}
 	
 }

@@ -1,4 +1,4 @@
-package com.hotel.Model;
+package com.hotel.model;
 
 public class BookingData {
 	
@@ -30,6 +30,11 @@ public class BookingData {
 
 	public void setRoom(Room room) {
 		this.room = room;
+	}
+
+	@Override
+	public String toString() {
+		return "BookingData [guest=" + guest + ", room=" + room + "]";
 	}
 	
 	

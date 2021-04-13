@@ -1,0 +1,70 @@
+package com.room.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "RoomInventory")
+public class Room {
+	@Id
+	private String id;
+	private String roomType;
+	private String status;
+	private BookingDetails bookingDetails;
+	// room price will be mentioned in roomType inventory
+	public Room() {
+		
+	}
+	
+	public Room(String id, String roomType, String status) {
+		super();
+		this.id = id;
+		this.roomType = roomType;
+		this.status = status;
+	}
+	public Room(String roomType, String status) {
+		super();
+		this.roomType = roomType;
+		this.status = status;
+	}
+
+	public Room(String id, String roomType, String status, BookingDetails bookingDetails) {
+		super();
+		this.id = id;
+		this.roomType = roomType;
+		this.status = status;
+		this.bookingDetails = bookingDetails;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public BookingDetails getBookingDetails() {
+		return bookingDetails;
+	}
+
+	public void setBookingDetails(BookingDetails bookingDetails) {
+		this.bookingDetails = bookingDetails;
+	}
+	
+}

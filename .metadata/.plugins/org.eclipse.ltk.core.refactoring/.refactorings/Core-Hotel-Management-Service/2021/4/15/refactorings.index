@@ -3,3 +3,13 @@
 1617783770454	Copy compilation unit
 1617798555894	Copy compilation unit
 1617953041237	Rename type 'Bill'
+1618029897785	Rename package 'com.hotel.Controller'
+1618029912552	Rename package 'com.hotel.Model'
+1618029927191	Rename package 'com.hotel.Service'
+1618049568928	Rename type 'AuthRequest'
+1618049585037	Rename type 'AuthResponse'
+1618074584920	Delete element
+1618075036737	Delete element
+1618077219217	Rename type 'CommonController'
+1618077254874	Rename type 'AuthRequest'
+1618077282183	Rename type 'AuthResponse'
