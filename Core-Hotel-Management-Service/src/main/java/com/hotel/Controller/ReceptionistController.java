@@ -3,6 +3,7 @@ package com.hotel.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,17 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotel.model.BookingData;
 import com.hotel.model.Employee;
 import com.hotel.model.Guest;
-import com.hotel.model.Invoice;
+import com.hotel.model.PaymentData;
 import com.hotel.model.Room;
 import com.hotel.model.Show;
+import com.hotel.service.PaymentService;
 import com.hotel.service.ReceptionistService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/receptionist")
 public class ReceptionistController {
 	
 	@Autowired
 	ReceptionistService receptionistService;
+	
+	@Autowired
+	PaymentService paymentService;
 	
 	/* Receptionist Operations
 	 * Operations on Room
@@ -102,9 +108,52 @@ public class ReceptionistController {
 	
 	// Issue Bill
 	@GetMapping("/issueBill/{guestId}")
-	public Invoice issueBills(@PathVariable String guestId,@RequestParam String employeeName)
+	public Show issueBills(@PathVariable String guestId,@RequestParam String employeeName)
 	{
 		return receptionistService.issueBill(guestId, employeeName);
 	}
+	
+	// Get Invoice By Id
+	@GetMapping("/getInvoiceById/{id}")
+	public PaymentData getInvoiceById(@PathVariable String id)
+	{
+		return paymentService.getInvoiceById(id);
+	}
+	
+	// Get Invoice By Status
+	@GetMapping("/getInvoiceByStatus/{status}")
+	public List<PaymentData> getInvoiceByStatus(@PathVariable String status)
+	{
+		return paymentService.getInvoiceByStatus(status);
+	}
+	
+	// Get All Invoices
+	@GetMapping("/getAllInvoices")
+	public List<PaymentData> getAllInvoices()
+	{
+		return paymentService.getAllInvoices();
+	}
+	
+	// Update Status
+	@PutMapping("/updateInvoiceStatus")
+	public Show updateStatus(@RequestBody PaymentData paymentData)
+	{
+		return paymentService.updateInvoiceStatus(paymentData);
+	}
+	
+	// Delete Invoice
+	@DeleteMapping("/deleteInvoiceById/{id}")
+	public Show deleteInvoiceById(@PathVariable String id)
+	{
+		return paymentService.deleteInvoiceById(id);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

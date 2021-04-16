@@ -57,6 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.cors();
 		http.csrf().disable().authorizeRequests()
 			.antMatchers("/receptionist/**").hasAnyAuthority("ROLE_OWNER","ROLE_MANAGER","ROLE_RECEPTIONIST")
 			.antMatchers("/manager/**").hasAnyAuthority("ROLE_OWNER","ROLE_MANAGER")

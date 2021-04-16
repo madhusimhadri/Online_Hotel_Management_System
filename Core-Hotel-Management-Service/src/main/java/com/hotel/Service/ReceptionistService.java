@@ -41,6 +41,9 @@ public class ReceptionistService {
 	@Autowired
 	SecurityConfig securityConfig;
 	
+	@Autowired
+	InvoiceService invoiceService;
+	
 	public String roomApi = "room-management-service";
 
 	// ************************* API Calls To Room Management Service ********************* //
@@ -328,13 +331,13 @@ public class ReceptionistService {
 	}
 	*/	
 	// Issue Bill
-	public Invoice issueBill(String guestId,String employeeName)
+	public Show issueBill(String guestId,String employeeName)
 	{
 		Guest guest = getGuestById(guestId);
 		if(guest.getRoomDetails() == null)
 		{
 			logger.error("No record found for guest");
-			return null;
+			return new Show("Invalid Request!"," Guest doesn't exist for that Id ");
 		}
 		
 		RoomStay roomDetails = guest.getRoomDetails();
@@ -366,7 +369,7 @@ public class ReceptionistService {
 		
 		invoice.setIssuedBy(employeeName);
 		
-		return invoice;
+		return invoiceService.displayInvoice(invoice);
 	}
 	
 	//Get Tax - Used in generating invoice

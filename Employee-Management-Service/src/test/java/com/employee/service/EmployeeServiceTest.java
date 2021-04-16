@@ -1,4 +1,4 @@
-/*
+
 package com.employee.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -40,7 +40,7 @@ public class EmployeeServiceTest {
 		Employee employee = new Employee();
 		Show result = new Show();
 		result.setMessage("Success!, Employee Added");
-		result.setReferId("E1");
+		result.setRefId("E1");
 		employee.setId("E1");
 		employee.setName("ABCDEF");
 		employee.setRole("RECEIPTIONIST");
@@ -48,7 +48,7 @@ public class EmployeeServiceTest {
 		employee.setPassword("qwerty");
 		
 		Mockito.when(employeeRepository.save(employee)).thenReturn(employee);
-		assertEquals(result.getReferId(),"E1");
+		assertEquals(result.getRefId(),"E1");
 		assertEquals(result.getMessage(),"Success!, Employee Added");
 	}
 	
@@ -58,7 +58,7 @@ public class EmployeeServiceTest {
 		Employee employee1 = new Employee();
 		Show result1 = new Show();
 		result1.setMessage("Success!, Employee Added");
-		result1.setReferId("E1");
+		result1.setRefId("E1");
 		employee1.setId("E1");
 		employee1.setName("ABCDEF");
 		employee1.setRole("RECEIPTIONIST");
@@ -68,7 +68,7 @@ public class EmployeeServiceTest {
 		Employee employee2 = new Employee();
 		Show result2 = new Show();
 		result2.setMessage("Success!, Employee Added");
-		result2.setReferId("E2");
+		result2.setRefId("E2");
 		employee2.setId("E2");
 		employee2.setName("ASDFGH");
 		employee2.setRole("MANAGER");
@@ -104,9 +104,9 @@ public class EmployeeServiceTest {
 	public void testgetEmployeeByName()
 	{
 		Employee employee1 = new Employee();
-		Result result1 = new Result();
+		Show result1 = new Show();
 		result1.setMessage("Success!, Employee Added");
-		result1.setrId("E1");
+		result1.setRefId("E1");
 		employee1.setId("E1");
 		employee1.setName("ABCDEF");
 		employee1.setRole("RECEIPTIONIST");
@@ -114,9 +114,9 @@ public class EmployeeServiceTest {
 		employee1.setPassword("qwerty");
 		
 		Employee employee2 = new Employee();
-		Result result2 = new Result();
+		Show result2 = new Show();
 		result2.setMessage("Success!, Employee Added");
-		result2.setrId("E2");
+		result2.setRefId("E2");
 		employee2.setId("E2");
 		employee2.setName("ASDFGH");
 		employee2.setRole("MANAGER");
@@ -126,7 +126,7 @@ public class EmployeeServiceTest {
 	}
 	
 	
-
+	/*
 	@Test
 	public void testgetEmployeeByRole()
 	{
@@ -140,14 +140,15 @@ public class EmployeeServiceTest {
 		Mockito.when(employeeRepository.findByRole("RECEIPTIONIST")).thenReturn(employee);
 	    assertThat(employeeService.getEmployeeByRole("RECEIPTIONIST")).isEqualTo(employee);
 	}
-
+	*/
+	
 	@Test
 	public void testUpdateEmployee()
 	{
 		Employee employee = new Employee();
 		Show result = new Show();
 		result.setMessage("Success!, Employee Details Updated");
-		result.setReferId("E1");
+		result.setRefId("E1");
 		employee.setId("E1");
 		employee.setName("ABCDEF");
 		employee.setRole("MANAGER");
@@ -155,7 +156,7 @@ public class EmployeeServiceTest {
 		employee.setPassword("qwerty");
 		
 		Mockito.when(employeeRepository.save(employee)).thenReturn(employee);
-		assertEquals(result.getReferId(),"E1");
+		assertEquals(result.getRefId(),"E1");
 		assertEquals(result.getMessage(),"Success!, Employee Details Updated");
 	}
 	
@@ -165,7 +166,7 @@ public class EmployeeServiceTest {
 		Optional<Employee> employee = Optional.of(new Employee());
 		Show result = new Show();
 		result.setMessage("Success!, Employee Added");
-		result.setReferId("E1");
+		result.setRefId("E1");
 		employee.get().setId("E1");
 		employee.get().setName("ABCDEF");
 		employee.get().setRole("MANAGER");
@@ -178,4 +179,3 @@ public class EmployeeServiceTest {
 	}
 	
 }
-*/
