@@ -57,11 +57,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors();
-		http.csrf().disable().authorizeRequests()
-			.antMatchers("/receptionist/**").hasAnyAuthority("ROLE_OWNER","ROLE_MANAGER","ROLE_RECEPTIONIST")
+		
+		http.csrf().disable().cors().and().authorizeRequests()
+			/*.antMatchers("/receptionist/**").hasAnyAuthority("ROLE_OWNER","ROLE_MANAGER","ROLE_RECEPTIONIST")
 			.antMatchers("/manager/**").hasAnyAuthority("ROLE_OWNER","ROLE_MANAGER")
-			.antMatchers("/owner/**").hasAuthority("ROLE_OWNER")
+			.antMatchers("/owner/**").hasAuthority("ROLE_OWNER")*/
+			.antMatchers("/receptionist/**").permitAll()
+			.antMatchers("/manager/**").permitAll()
+			.antMatchers("/owner/**").permitAll()
 			.antMatchers("/authenticate").permitAll()
 			.anyRequest().authenticated()
 			.and().sessionManagement()

@@ -48,6 +48,7 @@ public class ManagerService {
 	public String GET_ALL_ROOMTYPES = "http://" + roomApi + "/getAllTypes";
 	public String DELETE_ROOMTYPE = "http://" + roomApi + "/deleteRoomType/{type}";
 	public String GET_REPORT = "http://" + roomApi + "/getReports";
+	public String GET_ALL_ROOMS= "http://" + roomApi + "/getAllRooms";
 
 	// ************************* API Calls To Room Management Service Ends Here ********************* //
 
@@ -214,7 +215,7 @@ public class ManagerService {
 	}
 
 	// Delete Employee - Manager is not Allowed to delete employees with role as Owner
-	@HystrixCommand(fallbackMethod = "deleteEmployeeByIdFallback")
+	//@HystrixCommand(fallbackMethod = "deleteEmployeeByIdFallback")
 	public Show deleteEmployeeById(String id)
 	{
 		Employee employee = getEmployeeById(id);
@@ -227,11 +228,11 @@ public class ManagerService {
 		return result.getBody();
 	}
 
-	// Delete Employee - Fallback
+	/*// Delete Employee - Fallback
 	public Show deleteEmployeeByIdFallback(String id)
 	{
 		return getShowFallback();
-	}
+	}*/
 
 	// Get All Employees
 	@HystrixCommand(fallbackMethod = "getAllEmployeesFallback")

@@ -1,8 +1,0 @@
-package com.employee.Repository;
-
-import com.employee.exception.SequenceNotFound;
-
-public interface SequenceRepository {
-	
-	long getNextSequenceId(String key) throws SequenceNotFound;
-}

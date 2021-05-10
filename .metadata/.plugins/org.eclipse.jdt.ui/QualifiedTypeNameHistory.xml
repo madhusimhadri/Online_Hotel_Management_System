@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.TopicExchange"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.Binding"/>
-    <fullyQualifiedTypeName name="com.google.inject.internal.BindingBuilder"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.BindingBuilder"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.support.converter.MessageConverter"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.core.AmqpTemplate"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.connection.ConnectionFactory"/>
-    <fullyQualifiedTypeName name="com.payment.Repository.PaymentRepository"/>
-    <fullyQualifiedTypeName name="com.payment.Repository.SequenceRepository"/>
-    <fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
-    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.annotation.RabbitListener"/>
-    <fullyQualifiedTypeName name="com.payment.config.AMQPConfiguration"/>
-    <fullyQualifiedTypeName name="com.payment.model.Invoice"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
     <fullyQualifiedTypeName name="com.payment.Repository.StripeRepository"/>
     <fullyQualifiedTypeName name="com.stripe.Stripe"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -39,7 +24,6 @@
     <fullyQualifiedTypeName name="com.hotel.model.Invoice"/>
     <fullyQualifiedTypeName name="com.hotel.config.AMQPConfiguration"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.springframework.web.client.RestTemplate"/>
     <fullyQualifiedTypeName name="org.slf4j.Logger"/>
     <fullyQualifiedTypeName name="com.stripe.model.Customer"/>
@@ -60,4 +44,20 @@
     <fullyQualifiedTypeName name="com.hotel.model.PaymentData"/>
     <fullyQualifiedTypeName name="com.hotel.service.PaymentService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="com.hotel.model.RoomsAvailable"/>
+    <fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2"/>
+    <fullyQualifiedTypeName name="com.room.repository.RoomRepository"/>
+    <fullyQualifiedTypeName name="com.room.model.Room"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.test.context.SpringBootTest"/>
+    <fullyQualifiedTypeName name="org.springframework.test.context.junit4.SpringRunner"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.test.mock.mockito.MockBean"/>
+    <fullyQualifiedTypeName name="com.payment.Repository.PaymentRepository"/>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.payment.model.Invoice"/>
+    <fullyQualifiedTypeName name="org.mockito.Mockito"/>
+    <fullyQualifiedTypeName name="org.springframework.test.context.junit4.SpringJUnit4ClassRunner"/>
 </qualifiedTypeNameHistroy>

@@ -42,6 +42,7 @@ public class OwnerService {
 	public String GET_ALL_ROOMTYPES = "http://" + roomApi + "/getAllTypes";
 	public String DELETE_ROOMTYPE = "http://" + roomApi + "/deleteRoomType/{type}";
 	public String GET_REPORT = "http://" + roomApi + "/getReports";
+	public String GET_ALL_ROOMS= "http://" + roomApi + "/getAllRooms";
 
 	// ************************* API Calls To Room Management Service Ends Here *************** //
 

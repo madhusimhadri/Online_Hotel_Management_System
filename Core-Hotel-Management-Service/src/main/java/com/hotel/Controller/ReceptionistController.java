@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hotel.model.BillDetails;
 import com.hotel.model.BookingData;
 import com.hotel.model.Employee;
 import com.hotel.model.Guest;
 import com.hotel.model.PaymentData;
 import com.hotel.model.Room;
+import com.hotel.model.RoomType;
 import com.hotel.model.Show;
 import com.hotel.service.PaymentService;
 import com.hotel.service.ReceptionistService;
@@ -47,6 +49,13 @@ public class ReceptionistController {
 	public Show addGuest(@RequestBody Guest guest)
 	{
 		return receptionistService.addGuest(guest);
+	}
+	
+	// Get All Guests
+	@GetMapping("/getAllGuests")
+	public List<Guest> getAllGuests()
+	{
+		return receptionistService.getAllGuests();
 	}
 	
 	// Get Guest By Id
@@ -91,6 +100,21 @@ public class ReceptionistController {
 		return receptionistService.getRoomsByStatus(status);
 	}
 	
+	@GetMapping("/getAllRoomsByType/{type}")
+	public List<Room> getRoomsByType(@PathVariable String type){
+		return receptionistService.getAllRoomsByType(type);
+	}
+	
+	@GetMapping("/getAllRoomTypes")
+	public RoomType getAllRoomTypes() {
+		return receptionistService.getAllRoomTypes();
+	}
+	
+	@PutMapping("/updateRoom")
+	public Show updateRoom(@RequestBody Room room) {
+		return receptionistService.updateRoomDetails(room);
+	}
+	
 	//Get Logged in Employee
 	@GetMapping("/loggedInEmployee")
 	public Employee getLoggedInEmployee()
@@ -107,9 +131,11 @@ public class ReceptionistController {
 	}
 	
 	// Issue Bill
-	@GetMapping("/issueBill/{guestId}")
-	public Show issueBills(@PathVariable String guestId,@RequestParam String employeeName)
-	{
+	@PostMapping("/issueBill")
+	public Show issueBills(@RequestBody BillDetails billDetails)
+	{	
+		String guestId = billDetails.getGuestId();
+		String employeeName = billDetails.getEmployeeName();
 		return receptionistService.issueBill(guestId, employeeName);
 	}
 	
@@ -148,7 +174,12 @@ public class ReceptionistController {
 		return paymentService.deleteInvoiceById(id);
 	}
 	
-	
+	// Get All Rooms
+	@GetMapping("/getAllRooms")
+	public List<Room> getAllRooms()
+	{
+		return receptionistService.getAllRooms();
+	}
 	
 	
 	

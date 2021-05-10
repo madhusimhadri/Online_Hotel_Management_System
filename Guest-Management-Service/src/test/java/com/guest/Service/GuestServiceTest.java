@@ -22,10 +22,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.guest.model.AdditionalMembers;
-import com.guest.model.Address;
+
 import com.guest.model.Guest;
-import com.guest.model.RoomStay;
+
 import com.guest.model.Show;
 import com.guest.repository.GuestRepository;
 //import com.guest.service.GuestService;
@@ -96,7 +95,7 @@ public class GuestServiceTest {
 	}
 
 	// executing catch block need to re check!!
-
+/*
 	@Test
 	public void testgetGuestById()
 	{
@@ -143,7 +142,7 @@ public class GuestServiceTest {
 		Mockito.when(guestRepository.findByName("Madhu")).thenReturn(guestList);
 		assertThat(guestService.getGuestByName("Madhu")).isEqualTo(guest1);
 	}
-
+*/
 	@Test
 	public void testupdateGuest()
 	{
